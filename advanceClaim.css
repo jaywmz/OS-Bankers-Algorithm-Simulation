@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,7 +19,6 @@
   display: block;
   list-style: none;
   width: 20px;
-  /* border-radius: 50%!important; */
   height: 20px;
   background: #49b6c9;
   animation: animate 25s linear infinite;
@@ -115,8 +114,8 @@
   }
 }
 
-.subheading{
-  font-family: Montserrat;
+.subheading {
+  font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 48px;
@@ -124,24 +123,24 @@
   color: #024453;
 }
 
-#basic-addon1{
+#basic-addon1 {
   color: black;
   background-color: transparent;
   outline: none;
-  border: none;  
+  border: none;
 }
 
-input :focus{
-  outline: 0!important;
+input:focus {
+  outline: 0 !important;
 }
 
-table input{
-  padding: 8px;
-  border: #024453 1px solid;
+table input {
+  padding: 5px;
+  border: 1px solid #024453;
   border-radius: 10%;
 }
 
 td,
-th{
+th {
   padding: 5px;
 }
