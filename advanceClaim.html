@@ -294,7 +294,37 @@
       </div>
     </div>
     <!-- Process Sequence Ends -->
-  </div>
+
+    <!-- Deadlock Modal -->
+    <div class="modal fade" id="deadlockModal" tabindex="-1" aria-labelledby="deadlockModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deadlockModalLabel">Deadlock Detected</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>A deadlock has been detected in the system. This occurs when the processes are in a state where they are waiting for resources held by each other, causing a circular wait condition.</p>
+            <p><strong>Why it happened:</strong></p>
+            <ul>
+              <li>Processes are requesting more resources than what is available.</li>
+              <li>The current allocation of resources does not allow any process to proceed.</li>
+            </ul>
+            <p><strong>How to prevent:</strong></p>
+            <ul>
+              <li>Ensure that the sum of maximum resource requests does not exceed the total resources available.</li>
+              <li>Use resource allocation strategies that avoid circular waits.</li>
+              <li>Review and adjust the maximum resource claims for each process.</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

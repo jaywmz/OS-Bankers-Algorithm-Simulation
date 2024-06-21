@@ -79,6 +79,12 @@ function find_need() {
   displayMessage('Need matrix calculated.', 'info');
 }
 
+function clear_process_sequence() {
+  for (var i = 1; i <= 5; i++) {
+    document.getElementById('p' + i).value = '';
+  }
+}
+
 function run_algo() {
   if (!validateInput()) return;
 
@@ -127,12 +133,9 @@ function run_algo() {
     if (!found) {
       displayMessage('Deadlock detected!', 'danger');
       document.body.style.backgroundColor = "#ff7171";
+      clear_process_sequence();
+      $('#deadlockModal').modal('show');
       console.error('Deadlock detected:', { available, allocation, need, work, safeSeq });
-
-      // Clear process sequence
-      for (var i = 1; i <= 5; i++) {
-        document.getElementById('p' + i).value = '';
-      }
       return;
     }
   }
