@@ -52,6 +52,24 @@ function example() {
   displayMessage('Example values loaded successfully.', 'info');
 }
 
+function validateInput() {
+  for (var i = 1; i <= 5; i++) {
+    for (var j = 1; j <= 4; j++) {
+      if (!document.getElementById('a' + i + j).value || !document.getElementById('m' + i + j).value) {
+        displayMessage('Please fill in all Allocation and Max values.', 'danger');
+        return false;
+      }
+    }
+  }
+  for (var i = 1; i <= 4; i++) {
+    if (!document.getElementById('av1' + i).value) {
+      displayMessage('Please fill in all Available values.', 'danger');
+      return false;
+    }
+  }
+  return true;
+}
+
 function find_need() {
   for (var i = 1; i <= 5; i++) {
     for (var j = 1; j <= 4; j++) {
@@ -62,6 +80,8 @@ function find_need() {
 }
 
 function run_algo() {
+  if (!validateInput()) return;
+
   var available = [
     parseInt(document.getElementById('av11').value) || 0,
     parseInt(document.getElementById('av12').value) || 0,
@@ -105,7 +125,7 @@ function run_algo() {
       }
     }
     if (!found) {
-      displayMessage('Deadlock detected!', 'error');
+      displayMessage('Deadlock detected!', 'danger');
       document.body.style.backgroundColor = "#ff7171";
       console.error('Deadlock detected:', { available, allocation, need, work, safeSeq });
       return;
