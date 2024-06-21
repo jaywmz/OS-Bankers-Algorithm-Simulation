@@ -112,6 +112,7 @@ function run_algo() {
   var finish = new Array(5).fill(false);
   var safeSeq = [];
   var log = [];
+  var deadlockProcesses = [];
 
   while (safeSeq.length < 5) {
     var found = false;
@@ -127,6 +128,8 @@ function run_algo() {
           finish[i] = true;
           found = true;
           log.push(`Process P${i + 1} has completed.`);
+        } else {
+          deadlockProcesses.push("P" + (i + 1));
         }
       }
     }
@@ -134,6 +137,7 @@ function run_algo() {
       displayMessage('Deadlock detected!', 'danger');
       document.body.style.backgroundColor = "#ff7171";
       clear_process_sequence();
+      document.getElementById('deadlockProcesses').innerHTML = `<strong>Processes involved in deadlock:</strong> ${deadlockProcesses.join(', ')}`;
       $('#deadlockModal').modal('show');
       console.error('Deadlock detected:', { available, allocation, need, work, safeSeq });
       return;
