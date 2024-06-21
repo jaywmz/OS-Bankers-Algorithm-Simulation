@@ -16,6 +16,7 @@ function reset() {
   document.getElementById('resourceC').value = '';
   document.getElementById('resourceD').value = '';
   document.body.style.backgroundColor = "#ffffff";
+  displayMessage('Values reset successfully.', 'info');
 }
 
 function example() {
@@ -48,6 +49,7 @@ function example() {
   document.getElementById('av12').value = available[1];
   document.getElementById('av13').value = available[2];
   document.getElementById('av14').value = available[3];
+  displayMessage('Example values loaded successfully.', 'info');
 }
 
 function find_need() {
@@ -56,10 +58,10 @@ function find_need() {
       document.getElementById('n' + i + j).value = parseInt(document.getElementById('m' + i + j).value) - parseInt(document.getElementById('a' + i + j).value);
     }
   }
+  displayMessage('Need matrix calculated.', 'info');
 }
 
 function run_algo() {
-  // Retrieve initial available resources
   var available = [
     parseInt(document.getElementById('av11').value) || 0,
     parseInt(document.getElementById('av12').value) || 0,
@@ -67,10 +69,7 @@ function run_algo() {
     parseInt(document.getElementById('av14').value) || 0
   ];
 
-  // Make a copy of available resources to avoid modifying the original values
   var work = [...available];
-
-  // Retrieve allocated resources and need matrix
   var allocation = [];
   var need = [];
   for (var i = 1; i <= 5; i++) {
@@ -84,11 +83,10 @@ function run_algo() {
     need.push(n);
   }
 
-  // Initialize finish array and safe sequence
   var finish = new Array(5).fill(false);
   var safeSeq = [];
+  var log = [];
 
-  // Banker's Algorithm main loop
   while (safeSeq.length < 5) {
     var found = false;
     for (var i = 0; i < 5; i++) {
@@ -98,27 +96,29 @@ function run_algo() {
           if (need[i][j] > work[j]) break;
         }
         if (j === 4) {
-          // If all needs are met, allocate resources and mark process as finished
           for (var k = 0; k < 4; k++) work[k] += allocation[i][k];
           safeSeq.push("P" + (i + 1));
           finish[i] = true;
           found = true;
+          log.push(`Process P${i + 1} has completed.`);
         }
       }
     }
     if (!found) {
-      alert("Deadlock!!");
+      displayMessage('Deadlock detected!', 'error');
       document.body.style.backgroundColor = "#ff7171";
+      console.error('Deadlock detected:', { available, allocation, need, work, safeSeq });
       return;
     }
   }
 
-  // Display the safe sequence
   for (var i = 1; i <= 5; i++) {
     document.getElementById('p' + i).value = safeSeq[i - 1];
   }
   document.body.style.backgroundColor = "#28df99";
-  alert("Safe!!");
+  displayMessage('System is in a safe state.', 'success');
+  console.log('Safe sequence found:', safeSeq);
+  log.forEach(msg => console.log(msg));
 }
 
 function run_algo_wrapper() {
@@ -126,5 +126,14 @@ function run_algo_wrapper() {
   run_algo();
 }
 
-// Ensure the button calls the wrapper function
+function displayMessage(message, type) {
+  const messageBox = document.getElementById('messageBox');
+  messageBox.innerHTML = message;
+  messageBox.className = `alert alert-${type}`;
+  messageBox.style.display = 'block';
+  setTimeout(() => {
+    messageBox.style.display = 'none';
+  }, 3000);
+}
+
 document.querySelector('.btn-secondary[onclick="run_algo()"]').setAttribute('onclick', 'run_algo_wrapper()');
