@@ -1,3 +1,4 @@
+// Function to reset all input values and background color
 function reset() {
   for (var i = 1; i <= 5; i++) {
     for (var j = 1; j <= 4; j++) {
@@ -19,6 +20,7 @@ function reset() {
   displayMessage('Values reset successfully.', 'info');
 }
 
+// Function to load example values into the input fields
 function example() {
   var sam = [
     [0, 0, 1, 2],
@@ -52,6 +54,7 @@ function example() {
   displayMessage('Example values loaded successfully.', 'info');
 }
 
+// Function to validate all input fields
 function validateInput() {
   for (var i = 1; i <= 5; i++) {
     for (var j = 1; j <= 4; j++) {
@@ -70,6 +73,7 @@ function validateInput() {
   return true;
 }
 
+// Function to calculate the need matrix
 function find_need() {
   for (var i = 1; i <= 5; i++) {
     for (var j = 1; j <= 4; j++) {
@@ -79,12 +83,14 @@ function find_need() {
   displayMessage('Need matrix calculated.', 'info');
 }
 
+// Function to clear the process sequence
 function clear_process_sequence() {
   for (var i = 1; i <= 5; i++) {
     document.getElementById('p' + i).value = '';
   }
 }
 
+// Function to run the Banker's Algorithm
 function run_algo() {
   if (!validateInput()) return;
 
@@ -153,11 +159,13 @@ function run_algo() {
   log.forEach(msg => console.log(msg));
 }
 
+// Wrapper function to run the algorithm
 function run_algo_wrapper() {
   find_need();
   run_algo();
 }
 
+// Function to display messages
 function displayMessage(message, type) {
   const messageBox = document.getElementById('messageBox');
   messageBox.innerHTML = message;
@@ -168,4 +176,18 @@ function displayMessage(message, type) {
   }, 3000);
 }
 
+// Update button click handler to use the wrapper function
 document.querySelector('.btn-secondary[onclick="run_algo()"]').setAttribute('onclick', 'run_algo_wrapper()');
+
+// GSAP animations for buttons and other elements
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      gsap.to(button, { duration: 1, x: 100, opacity: 0.5 });
+    });
+  });
+
+  // Example using GSAP for box animation
+  gsap.to('.box', { duration: 2, x: 300, rotation: 360, scale: 0.5 });
+});

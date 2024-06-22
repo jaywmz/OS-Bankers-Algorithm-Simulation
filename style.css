@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   overflow-x: hidden;
   background: #ecf3f3;
@@ -24,7 +25,6 @@ body {
   display: block;
   list-style: none;
   width: 20px;
-  /* border-radius: 50%!important; */
   height: 20px;
   background: #49b6c9;
   animation: animate 25s linear infinite;
@@ -120,13 +120,13 @@ body {
   }
 }
 
-.content{
+.content {
   height: 100vh;
   width: 100vw;
   position: relative;
 }
 
-.heading{
+.heading {
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
@@ -135,7 +135,7 @@ body {
   color: #024453;
 }
 
-.subheading{
+.subheading {
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
@@ -144,7 +144,7 @@ body {
   color: #024453;
 }
 
-.desc{
+.desc {
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
@@ -157,22 +157,22 @@ body {
   color: #024453;
 }
 
-.row{
+.row {
   position: absolute;
   bottom: 40%;
   width: 100vw;
 }
 
-.names1{
+.names1 {
   position: absolute;
   bottom: 10%;
   left: 49%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
-.names2{  
+.names2 {
   position: absolute;
   bottom: 5%;
   left: 49%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
