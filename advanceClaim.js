@@ -2,7 +2,24 @@
 function clear_process_sequence() {
   const sequenceContainer = document.getElementById('process-sequence');
   sequenceContainer.innerHTML = '';
+  const logContainer = document.getElementById('process-log');
+  logContainer.innerHTML = '';
 }
+
+// Function to enforce numeric input on specified fields
+function enforceNumericInput() {
+  const inputs = document.querySelectorAll('input[type="text"]');
+  inputs.forEach(input => {
+    input.addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^0-9]/g, '');
+    });
+  });
+}
+
+// Call this function on document ready
+document.addEventListener('DOMContentLoaded', () => {
+  enforceNumericInput();
+});
 
 // Function to reset all input values and background color
 function reset() {
@@ -44,7 +61,7 @@ function example() {
     [1, 6, 5, 6]
   ];
 
-  var available = [1, 5, 2, 0];
+  var total = [3, 10, 11, 14];
 
   for (var i = 1; i <= 5; i++) {
     for (var j = 1; j <= 4; j++) {
@@ -53,30 +70,78 @@ function example() {
     }
   }
 
+  document.getElementById('resourceA').value = total[0];
+  document.getElementById('resourceB').value = total[1];
+  document.getElementById('resourceC').value = total[2];
+  document.getElementById('resourceD').value = total[3];
+  updateAvailableResources(); // Update available resources based on total and allocation
+  displayMessage('Example values loaded successfully.', 'info');
+}
+
+// Function to update available resources based on total and allocation
+function updateAvailableResources() {
+  const totalResources = [
+    parseInt(document.getElementById('resourceA').value) || 0,
+    parseInt(document.getElementById('resourceB').value) || 0,
+    parseInt(document.getElementById('resourceC').value) || 0,
+    parseInt(document.getElementById('resourceD').value) || 0
+  ];
+
+  const allocation = [0, 0, 0, 0];
+  for (var i = 1; i <= 5; i++) {
+    for (var j = 1; j <= 4; j++) {
+      allocation[j - 1] += parseInt(document.getElementById('a' + i + j).value) || 0;
+    }
+  }
+
+  const available = totalResources.map((total, index) => total - allocation[index]);
+
   document.getElementById('av11').value = available[0];
   document.getElementById('av12').value = available[1];
   document.getElementById('av13').value = available[2];
   document.getElementById('av14').value = available[3];
-  displayMessage('Example values loaded successfully.', 'info');
 }
 
 // Function to validate all input fields
 function validateInput() {
+  const maxAllowedValue = 100; // Set a threshold for unusually high values
+  let valid = true;
+  let warningMessage = '';
+
   for (var i = 1; i <= 5; i++) {
     for (var j = 1; j <= 4; j++) {
-      if (!document.getElementById('a' + i + j).value || !document.getElementById('m' + i + j).value) {
+      const allocation = document.getElementById('a' + i + j).value;
+      const maximum = document.getElementById('m' + i + j).value;
+      
+      if (!allocation || !maximum) {
         displayMessage('Please fill in all Allocation and Max values.', 'danger');
         return false;
+      }
+
+      if (parseInt(allocation) > maxAllowedValue || parseInt(maximum) > maxAllowedValue) {
+        warningMessage = 'Warning: Unusually high values entered. This may lead to unrealistic scenarios.';
+        valid = false;
       }
     }
   }
   for (var i = 1; i <= 4; i++) {
-    if (!document.getElementById('av1' + i).value) {
+    const available = document.getElementById('av1' + i).value;
+    if (!available) {
       displayMessage('Please fill in all Available values.', 'danger');
       return false;
     }
+
+    if (parseInt(available) > maxAllowedValue) {
+      warningMessage = 'Warning: Unusually high values entered. This may lead to unrealistic scenarios.';
+      valid = false;
+    }
   }
-  return true;
+
+  if (warningMessage) {
+    displayMessage(warningMessage, 'warning');
+  }
+
+  return valid;
 }
 
 // Function to calculate the need matrix
@@ -108,6 +173,15 @@ function animateProcessSequence(sequence) {
       { opacity: 1, scale: 1, duration: 0.5, delay: index * 0.5 }
     );
   });
+}
+
+// Function to log process sequence steps
+function logProcessSequence(message) {
+  const logContainer = document.getElementById('process-log');
+  const logEntry = document.createElement('div');
+  logEntry.className = 'log-entry';
+  logEntry.innerText = message;
+  logContainer.appendChild(logEntry);
 }
 
 // Function to run the Banker's Algorithm
@@ -154,6 +228,7 @@ function run_algo() {
           finish[i] = true;
           found = true;
           log.push(`Process P${i + 1} has completed.`);
+          logProcessSequence(`Process P${i + 1} has completed.`);
         } else {
           deadlockProcesses.push("P" + (i + 1));
         }
@@ -166,6 +241,7 @@ function run_algo() {
       document.getElementById('deadlockProcesses').innerHTML = `<strong>Processes involved in deadlock:</strong> ${deadlockProcesses.join(', ')}`;
       $('#deadlockModal').modal('show');
       console.error('Deadlock detected:', { available, allocation, need, work, safeSeq });
+      logProcessSequence('Deadlock detected.');
       return;
     }
   }
@@ -175,6 +251,7 @@ function run_algo() {
   displayMessage('System is in a safe state.', 'success');
   console.log('Safe sequence found:', safeSeq);
   log.forEach(msg => console.log(msg));
+  logProcessSequence('Safe sequence found: ' + safeSeq.join(', '));
 }
 
 // Wrapper function to run the algorithm
@@ -205,4 +282,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Example using GSAP for box animation
   gsap.to('.box', { duration: 2, x: 300, rotation: 360, scale: 0.5 });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  enforceNumericInput();
+  updateAvailableResources(); // Initialize available resources based on current inputs
+  // Initialize tooltips
+  $('[data-toggle="tooltip"]').tooltip();
 });
