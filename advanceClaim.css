@@ -4,7 +4,12 @@
   box-sizing: border-box;
 }
 
-.circles {
+body {
+  overflow-x: hidden;
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+}
+
+.background {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,25 +19,26 @@
   z-index: -1;
 }
 
-.circles li {
+.background li {
   position: absolute;
   display: block;
   list-style: none;
   width: 20px;
   height: 20px;
-  background: #49b6c9;
+  background: rgba(0, 255, 255, 0.8);
   animation: animate 25s linear infinite;
   bottom: -150px;
+  border-radius: 50%;
 }
 
-.circles li:nth-child(1) {
+.background li:nth-child(1) {
   left: 5%;
   width: 50px;
   height: 50px;
   animation-delay: 0s;
 }
 
-.circles li:nth-child(2) {
+.background li:nth-child(2) {
   left: 10%;
   width: 20px;
   height: 20px;
@@ -40,14 +46,14 @@
   animation-duration: 12s;
 }
 
-.circles li:nth-child(3) {
+.background li:nth-child(3) {
   left: 6%;
   width: 20px;
   height: 20px;
   animation-delay: 4s;
 }
 
-.circles li:nth-child(4) {
+.background li:nth-child(4) {
   left: 89%;
   width: 60px;
   height: 60px;
@@ -55,28 +61,28 @@
   animation-duration: 18s;
 }
 
-.circles li:nth-child(5) {
+.background li:nth-child(5) {
   left: 90%;
   width: 20px;
   height: 20px;
   animation-delay: 0s;
 }
 
-.circles li:nth-child(6) {
+.background li:nth-child(6) {
   left: 85%;
   width: 10px;
   height: 10px;
   animation-delay: 3s;
 }
 
-.circles li:nth-child(7) {
+.background li:nth-child(7) {
   left: 5%;
   width: 50px;
   height: 50px;
   animation-delay: 7s;
 }
 
-.circles li:nth-child(8) {
+.background li:nth-child(8) {
   left: 10%;
   width: 25px;
   height: 25px;
@@ -84,7 +90,7 @@
   animation-duration: 45s;
 }
 
-.circles li:nth-child(9) {
+.background li:nth-child(9) {
   left: 100%;
   width: 15px;
   height: 15px;
@@ -92,7 +98,7 @@
   animation-duration: 35s;
 }
 
-.circles li:nth-child(10) {
+.background li:nth-child(10) {
   left: 95%;
   width: 50px;
   height: 50px;
@@ -120,11 +126,11 @@
   font-weight: normal;
   font-size: 48px;
   line-height: 59px;
-  color: #024453;
+  color: #f1f1f1;
 }
 
 #basic-addon1 {
-  color: black;
+  color: white;
   background-color: transparent;
   outline: none;
   border: none;
@@ -136,13 +142,16 @@ input:focus {
 
 table input {
   padding: 5px;
-  border: 1px solid #024453;
+  border: 1px solid #f1f1f1;
   border-radius: 10%;
+  background-color: #34495e;
+  color: #f1f1f1;
 }
 
 td,
 th {
   padding: 5px;
+  color: #f1f1f1;
 }
 
 /* Add a fade-in animation to elements */
@@ -169,7 +178,7 @@ button:hover {
 .box {
   width: 100px;
   height: 100px;
-  background-color: red;
+  background-color: #1abc9c;
   margin: 20px;
 }
 
@@ -182,7 +191,7 @@ button:hover {
 .process-step {
   display: inline-block;
   padding: 5px 10px;
-  background-color: #024453;
+  background-color: #34495e;
   color: white;
   border-radius: 5px;
   font-size: 18px;
@@ -191,28 +200,30 @@ button:hover {
 }
 
 .log-entry {
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
+  background-color: #2c3e50;
+  border: 1px solid #34495e;
   padding: 10px;
   margin-bottom: 5px;
   border-radius: 5px;
+  color: #f1f1f1;
 }
 
 .modal-content {
-  background-color: #f0f8ff;
+  background-color: #2c3e50;
 }
 
 .modal-header {
-  background-color: #024453;
+  background-color: #1abc9c;
   color: white;
 }
 
 .modal-body p {
   margin-bottom: 10px;
+  color: #f1f1f1;
 }
 
 .modal-body strong {
-  color: #d9534f;
+  color: #e74c3c;
 }
 
 /* Add this CSS for the modal width adjustment */
@@ -222,6 +233,7 @@ button:hover {
 
 .modal-body ul {
   padding-left: 20px; /* Ensure proper indentation for bullet points */
+  color: #f1f1f1;
 }
 
 .modal-header .close {
@@ -230,7 +242,7 @@ button:hover {
   right: 15px;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #000;
+  color: #f1f1f1;
   opacity: 1;
 }
 
@@ -242,6 +254,7 @@ button:hover {
 
 .alert-heading {
   font-size: 1.5rem;
+  color: #9898cd;
 }
 
 /* Ensure the close button does not overlap */
@@ -252,4 +265,7 @@ button:hover {
 .modal-footer .btn {
   margin: 0 auto;
   display: block;
+  background-color: #1abc9c;
+  color: white;
+  border: none;
 }

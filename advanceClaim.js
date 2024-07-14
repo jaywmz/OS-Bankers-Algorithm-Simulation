@@ -152,6 +152,7 @@ function find_need() {
     }
   }
   displayMessage('Need matrix calculated.', 'info');
+  updateAvailableResources(); // Update available resources after calculating the need matrix
 }
 
 // Function to animate the process sequence step-by-step
