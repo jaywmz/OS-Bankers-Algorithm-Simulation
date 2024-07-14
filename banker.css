@@ -6,8 +6,10 @@
 
 body {
   overflow-x: hidden;
-  background: linear-gradient(to right, #2c3e50, #4ca1af);
+  background: linear-gradient(to right, #2c3e50, #4ca1af); /* Default background */
+  transition: background 0.5s; /* Smooth transition for background color change */
 }
+
 
 .background {
   position: fixed;

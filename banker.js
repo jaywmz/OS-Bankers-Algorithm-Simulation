@@ -38,7 +38,7 @@ function reset() {
   document.getElementById('resourceB').value = '';
   document.getElementById('resourceC').value = '';
   document.getElementById('resourceD').value = '';
-  document.body.style.backgroundColor = "#ffffff";
+  document.body.style.background = "linear-gradient(to right, #2c3e50, #4ca1af)"; // Reset background to default gradient
   clear_process_sequence(); // Reset the process sequence
   displayMessage('Values reset successfully.', 'info');
 }
@@ -280,7 +280,7 @@ function run_algo() {
     if (!found) {
       const deadlockCause = deadlockProcesses[0];
       displayMessage('Deadlock detected!', 'danger');
-      document.body.style.backgroundColor = "#ff7171";
+      document.body.style.background = 'red'; // Change background to gradient + red color
       clear_process_sequence();
       document.getElementById('deadlockProcesses').innerHTML = `<strong>Processes involved in deadlock:</strong> ${deadlockProcesses.join(', ')}. <br> Process ${deadlockCause} caused the deadlock.`;
       $('#deadlockModal').modal('show');
@@ -291,7 +291,7 @@ function run_algo() {
   }
 
   animateProcessSequence(safeSeq);
-  document.body.style.backgroundColor = "#28df99";
+  document.body.style.background = "green"; // Change background to cool green for safe state
   displayMessage('System is in a safe state.', 'success');
   console.log('Safe sequence found:', safeSeq);
   log.forEach(msg => console.log(msg));
