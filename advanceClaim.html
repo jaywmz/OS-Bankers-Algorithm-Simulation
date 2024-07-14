@@ -34,10 +34,9 @@
       <p>1. Enter the total instances of each resource (A, B, C, D).</p>
       <p>2. Fill in the Allocation matrix for each process (P1 to P5).</p>
       <p>3. Fill in the Maximum matrix for each process (P1 to P5).</p>
-      <p>4. Fill in the Available resources (A, B, C, D).</p>
-      <p>5. Click on "Run Algorithm" to see the process sequence and check for deadlocks.</p>
-      <p>6. Click on "Example" to load sample values and see how the algorithm works.</p>
-      <p>7. Click on "Reset Values" to clear all input fields and start over.</p>
+      <p>4. Click on "Run Algorithm" to see the process sequence and check for deadlocks.</p>
+      <p>5. Click on "Example" to load sample values and see how the algorithm works.</p>
+      <p>6. Click on "Reset Values" to clear all input fields and start over.</p>
     </div>
   </div>
   <!-- Instructions Section Ends -->
@@ -102,38 +101,38 @@
           <tbody>
             <tr>
               <td>P1</td>
-              <td><input class="form-control" id="a11" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource A for P1"></td>
-              <td><input class="form-control" id="a12" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource B for P1"></td>
-              <td><input class="form-control" id="a13" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource C for P1"></td>
-              <td><input class="form-control" id="a14" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource D for P1"></td>
+              <td><input class="form-control" id="a11" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource A for P1" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a12" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource B for P1" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a13" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource C for P1" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a14" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource D for P1" oninput="find_need(); updateAvailableResources()"></td>
             </tr>
             <tr>
               <td>P2</td>
-              <td><input class="form-control" id="a21" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource A for P2"></td>
-              <td><input class="form-control" id="a22" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource B for P2"></td>
-              <td><input class="form-control" id="a23" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource C for P2"></td>
-              <td><input class="form-control" id="a24" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource D for P2"></td>
+              <td><input class="form-control" id="a21" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource A for P2" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a22" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource B for P2" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a23" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource C for P2" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a24" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource D for P2" oninput="find_need(); updateAvailableResources()"></td>
             </tr>
             <tr>
               <td>P3</td>
-              <td><input class="form-control" id="a31" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource A for P3"></td>
-              <td><input class="form-control" id="a32" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource B for P3"></td>
-              <td><input class="form-control" id="a33" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource C for P3"></td>
-              <td><input class="form-control" id="a34" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource D for P3"></td>
+              <td><input class="form-control" id="a31" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource A for P3" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a32" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource B for P3" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a33" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource C for P3" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a34" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource D for P3" oninput="find_need(); updateAvailableResources()"></td>
             </tr>
             <tr>
               <td>P4</td>
-              <td><input class="form-control" id="a41" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource A for P4"></td>
-              <td><input class="form-control" id="a42" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource B for P4"></td>
-              <td><input class="form-control" id="a43" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource C for P4"></td>
-              <td><input class="form-control" id="a44" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource D for P4"></td>
+              <td><input class="form-control" id="a41" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource A for P4" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a42" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource B for P4" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a43" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource C for P4" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a44" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource D for P4" oninput="find_need(); updateAvailableResources()"></td>
             </tr>
             <tr>
               <td>P5</td>
-              <td><input class="form-control" id="a51" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource A for P5"></td>
-              <td><input class="form-control" id="a52" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource B for P5"></td>
-              <td><input class="form-control" id="a53" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource C for P5"></td>
-              <td><input class="form-control" id="a54" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource D for P5"></td>
+              <td><input class="form-control" id="a51" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource A for P5" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a52" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource B for P5" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a53" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource C for P5" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="a54" size="2" maxlength="2" data-toggle="tooltip" title="Enter the allocated instances of Resource D for P5" oninput="find_need(); updateAvailableResources()"></td>
             </tr>
           </tbody>
         </table>
@@ -158,38 +157,38 @@
           <tbody>
             <tr>
               <td>P1</td>
-              <td><input class="form-control" id="m11" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource A for P1"></td>
-              <td><input class="form-control" id="m12" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource B for P1"></td>
-              <td><input class="form-control" id="m13" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource C for P1"></td>
-              <td><input class="form-control" id="m14" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource D for P1"></td>
+              <td><input class="form-control" id="m11" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource A for P1" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m12" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource B for P1" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m13" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource C for P1" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m14" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource D for P1" oninput="find_need(); updateAvailableResources()"></td>
             </tr>
             <tr>
               <td>P2</td>
-              <td><input class="form-control" id="m21" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource A for P2"></td>
-              <td><input class="form-control" id="m22" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource B for P2"></td>
-              <td><input class="form-control" id="m23" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource C for P2"></td>
-              <td><input class="form-control" id="m24" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource D for P2"></td>
+              <td><input class="form-control" id="m21" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource A for P2" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m22" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource B for P2" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m23" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource C for P2" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m24" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource D for P2" oninput="find_need(); updateAvailableResources()"></td>
             </tr>
             <tr>
               <td>P3</td>
-              <td><input class="form-control" id="m31" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource A for P3"></td>
-              <td><input class="form-control" id="m32" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource B for P3"></td>
-              <td><input class="form-control" id="m33" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource C for P3"></td>
-              <td><input class="form-control" id="m34" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource D for P3"></td>
+              <td><input class="form-control" id="m31" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource A for P3" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m32" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource B for P3" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m33" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource C for P3" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m34" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource D for P3" oninput="find_need(); updateAvailableResources()"></td>
             </tr>
             <tr>
               <td>P4</td>
-              <td><input class="form-control" id="m41" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource A for P4"></td>
-              <td><input class="form-control" id="m42" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource B for P4"></td>
-              <td><input class="form-control" id="m43" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource C for P4"></td>
-              <td><input class="form-control" id="m44" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource D for P4"></td>
+              <td><input class="form-control" id="m41" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource A for P4" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m42" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource B for P4" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m43" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource C for P4" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m44" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource D for P4" oninput="find_need(); updateAvailableResources()"></td>
             </tr>
             <tr>
               <td>P5</td>
-              <td><input class="form-control" id="m51" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource A for P5"></td>
-              <td><input class="form-control" id="m52" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource B for P5"></td>
-              <td><input class="form-control" id="m53" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource C for P5"></td>
-              <td><input class="form-control" id="m54" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource D for P5"></td>
+              <td><input class="form-control" id="m51" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource A for P5" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m52" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource B for P5" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m53" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource C for P5" oninput="find_need(); updateAvailableResources()"></td>
+              <td><input class="form-control" id="m54" size="2" maxlength="2" data-toggle="tooltip" title="Enter the maximum instances of Resource D for P5" oninput="find_need(); updateAvailableResources()"></td>
             </tr>
           </tbody>
         </table>

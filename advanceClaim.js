@@ -184,9 +184,43 @@ function logProcessSequence(message) {
   logContainer.appendChild(logEntry);
 }
 
+// Function to log detailed calculation process
+function logCalculationProcess(process, workBefore, need, allocation, workAfter, enoughResources) {
+  const logContainer = document.getElementById('process-log');
+  const logEntry = document.createElement('div');
+  logEntry.className = 'log-entry';
+
+  const needStr = need.join(', ');
+  const workBeforeStr = workBefore.join(', ');
+  const allocationStr = allocation.join(', ');
+  const workAfterStr = workAfter.join(', ');
+
+  let message = `<strong>${process}</strong><br>
+                 Need: [${needStr}]<br>
+                 Available before: [${workBeforeStr}]<br>
+                 Allocation: [${allocationStr}]<br>`;
+
+  if (enoughResources) {
+    message += `Available after: [${workAfterStr}]`;
+  } else {
+    message += `Not enough available resources.`;
+  }
+
+  logEntry.innerHTML = message;
+  logContainer.appendChild(logEntry);
+}
+
+// Function to reset the modal state
+function resetModal() {
+  document.getElementById('deadlockProcesses').innerHTML = '';
+  $('#deadlockModal').modal('hide'); // Ensure the modal is hidden
+}
+
 // Function to run the Banker's Algorithm
 function run_algo() {
   if (!validateInput()) return;
+
+  resetModal(); // Reset modal state before running the algorithm
 
   var available = [
     parseInt(document.getElementById('av11').value) || 0,
@@ -223,25 +257,34 @@ function run_algo() {
           if (need[i][j] > work[j]) break;
         }
         if (j === 4) {
+          const workBefore = [...work];
           for (var k = 0; k < 4; k++) work[k] += allocation[i][k];
+          const workAfter = [...work];
+          logCalculationProcess(`P${i + 1}`, workBefore, need[i], allocation[i], workAfter, true);
+
           safeSeq.push("P" + (i + 1));
           finish[i] = true;
           found = true;
           log.push(`Process P${i + 1} has completed.`);
           logProcessSequence(`Process P${i + 1} has completed.`);
         } else {
-          deadlockProcesses.push("P" + (i + 1));
+          const workBefore = [...work];
+          logCalculationProcess(`P${i + 1}`, workBefore, need[i], allocation[i], work, false);
+          if (!deadlockProcesses.includes(`P${i + 1}`)) {
+            deadlockProcesses.push(`P${i + 1}`);
+          }
         }
       }
     }
     if (!found) {
+      const deadlockCause = deadlockProcesses[0];
       displayMessage('Deadlock detected!', 'danger');
       document.body.style.backgroundColor = "#ff7171";
       clear_process_sequence();
-      document.getElementById('deadlockProcesses').innerHTML = `<strong>Processes involved in deadlock:</strong> ${deadlockProcesses.join(', ')}`;
+      document.getElementById('deadlockProcesses').innerHTML = `<strong>Processes involved in deadlock:</strong> ${deadlockProcesses.join(', ')}. <br> Process ${deadlockCause} caused the deadlock.`;
       $('#deadlockModal').modal('show');
       console.error('Deadlock detected:', { available, allocation, need, work, safeSeq });
-      logProcessSequence('Deadlock detected.');
+      logProcessSequence(`Deadlock detected. Process ${deadlockCause} caused the deadlock.`);
       return;
     }
   }
@@ -257,6 +300,7 @@ function run_algo() {
 // Wrapper function to run the algorithm
 function run_algo_wrapper() {
   find_need();
+  updateAvailableResources(); // Update available resources before running the algorithm
   run_algo();
 }
 

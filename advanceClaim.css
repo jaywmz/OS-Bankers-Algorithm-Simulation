@@ -189,3 +189,67 @@ button:hover {
   opacity: 0; /* Initial state for animation */
   transform: scale(0); /* Initial state for animation */
 }
+
+.log-entry {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.modal-content {
+  background-color: #f0f8ff;
+}
+
+.modal-header {
+  background-color: #024453;
+  color: white;
+}
+
+.modal-body p {
+  margin-bottom: 10px;
+}
+
+.modal-body strong {
+  color: #d9534f;
+}
+
+/* Add this CSS for the modal width adjustment */
+.modal-dialog {
+  max-width: 700px; /* Adjust this value as needed */
+}
+
+.modal-body ul {
+  padding-left: 20px; /* Ensure proper indentation for bullet points */
+}
+
+.modal-header .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  opacity: 1;
+}
+
+/* Modal custom styles */
+.modal-content {
+  position: relative;
+  padding: 20px;
+}
+
+.alert-heading {
+  font-size: 1.5rem;
+}
+
+/* Ensure the close button does not overlap */
+.modal-footer {
+  position: relative;
+}
+
+.modal-footer .btn {
+  margin: 0 auto;
+  display: block;
+}
