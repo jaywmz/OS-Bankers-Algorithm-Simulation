@@ -172,3 +172,20 @@ button:hover {
   background-color: red;
   margin: 20px;
 }
+
+/* Styling for process sequence animation */
+#process-sequence {
+  display: flex;
+  gap: 10px;
+}
+
+.process-step {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #024453;
+  color: white;
+  border-radius: 5px;
+  font-size: 18px;
+  opacity: 0; /* Initial state for animation */
+  transform: scale(0); /* Initial state for animation */
+}

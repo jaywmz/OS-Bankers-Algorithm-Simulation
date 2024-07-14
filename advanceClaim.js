@@ -1,3 +1,9 @@
+// Function to clear the process sequence
+function clear_process_sequence() {
+  const sequenceContainer = document.getElementById('process-sequence');
+  sequenceContainer.innerHTML = '';
+}
+
 // Function to reset all input values and background color
 function reset() {
   for (var i = 1; i <= 5; i++) {
@@ -6,7 +12,6 @@ function reset() {
       document.getElementById('m' + i + j).value = '';
       document.getElementById('n' + i + j).value = '';
     }
-    document.getElementById('p' + i).value = '';
   }
   document.getElementById('av11').value = '';
   document.getElementById('av12').value = '';
@@ -17,6 +22,7 @@ function reset() {
   document.getElementById('resourceC').value = '';
   document.getElementById('resourceD').value = '';
   document.body.style.backgroundColor = "#ffffff";
+  clear_process_sequence(); // Reset the process sequence
   displayMessage('Values reset successfully.', 'info');
 }
 
@@ -83,11 +89,25 @@ function find_need() {
   displayMessage('Need matrix calculated.', 'info');
 }
 
-// Function to clear the process sequence
-function clear_process_sequence() {
-  for (var i = 1; i <= 5; i++) {
-    document.getElementById('p' + i).value = '';
-  }
+// Function to animate the process sequence step-by-step
+function animateProcessSequence(sequence) {
+  const sequenceContainer = document.getElementById('process-sequence');
+  sequenceContainer.innerHTML = ''; // Clear previous sequence
+
+  sequence.forEach((process, index) => {
+    const processElement = document.createElement('span');
+    processElement.innerHTML = process;
+    processElement.className = 'process-step';
+
+    sequenceContainer.appendChild(processElement);
+
+    // Animate the process step with a delay
+    gsap.fromTo(
+      processElement,
+      { opacity: 0, scale: 0 },
+      { opacity: 1, scale: 1, duration: 0.5, delay: index * 0.5 }
+    );
+  });
 }
 
 // Function to run the Banker's Algorithm
@@ -150,9 +170,7 @@ function run_algo() {
     }
   }
 
-  for (var i = 1; i <= 5; i++) {
-    document.getElementById('p' + i).value = safeSeq[i - 1];
-  }
+  animateProcessSequence(safeSeq);
   document.body.style.backgroundColor = "#28df99";
   displayMessage('System is in a safe state.', 'success');
   console.log('Safe sequence found:', safeSeq);
@@ -175,9 +193,6 @@ function displayMessage(message, type) {
     messageBox.style.display = 'none';
   }, 3000);
 }
-
-// Update button click handler to use the wrapper function
-document.querySelector('.btn-secondary[onclick="run_algo()"]').setAttribute('onclick', 'run_algo_wrapper()');
 
 // GSAP animations for buttons and other elements
 document.addEventListener('DOMContentLoaded', () => {
