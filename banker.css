@@ -10,6 +10,10 @@ body {
   transition: background 0.5s; /* Smooth transition for background color change */
 }
 
+.text {
+  color: #f1f1f1;
+}
+
 
 .background {
   position: fixed;

@@ -163,7 +163,7 @@ function animateProcessSequence(sequence) {
   sequence.forEach((process, index) => {
     const processElement = document.createElement('span');
     processElement.innerHTML = process;
-    processElement.className = 'process-step';
+    processElement.className = 'process-step mx-1';
 
     sequenceContainer.appendChild(processElement);
 
