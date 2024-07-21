@@ -33,9 +33,10 @@ This project implements the Banker's Algorithm for deadlock avoidance in the con
 ## Project Files
 
 - `index.html`: The main HTML file containing the structure of the application.
+- `banker.html`: The HTML file containing the structure of the banker algorithm simulation page.
 - `style.css`: The CSS file for styling the application.
-- `advanceClaim.css`: Additional CSS file for specific styling.
-- `advanceClaim.js`: JavaScript file containing the logic for the Banker's Algorithm and interactive features.
+- `banker.css`: Additional CSS file for specific styling.
+- `banker.js`: JavaScript file containing the logic for the Banker's Algorithm and interactive features.
 - `README.md`: This file.
 
 ## How to Use
@@ -47,8 +48,8 @@ This project implements the Banker's Algorithm for deadlock avoidance in the con
 
 ### Run Algorithm
 
-1. Click the "Run Algorithm" button to check if the system is in a safe state.
-2. If a deadlock is detected, a modal will explain the reasons and suggest preventive measures.
+1. Click the "Run Algorithm" button to check if the system is in a safe state, if safe state, will show the sequence and the log calculations.
+2. If a deadlock is detected, a modal will explain the reasons and suggest preventive measures, also stating the processes that will be affected, and which process caused the deadlock.
 
 ### Example Values
 
