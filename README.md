@@ -11,7 +11,7 @@ This project implements the Banker's Algorithm for deadlock avoidance in the con
 
 ## Features
 
-- **Interactive Input:** Users can input the allocation, maximum, and available resources for each process.
+- **Interactive Input:** Users can input the allocation, maximum, and total instances of resources for each process.
 - **Dynamic Calculation:** The algorithm dynamically calculates the Need matrix and checks for a safe sequence.
 - **Error Handling:** Provides informative error messages for invalid inputs and deadlock situations.
 - **Visual Feedback:** Changes the background color and displays messages to indicate the system's state (safe or deadlock).
@@ -34,8 +34,8 @@ This project implements the Banker's Algorithm for deadlock avoidance in the con
 
 - `index.html`: The main HTML file containing the structure of the application.
 - `banker.html`: The HTML file containing the structure of the banker algorithm simulation page.
-- `style.css`: The CSS file for styling the application.
-- `banker.css`: Additional CSS file for specific styling.
+- `style.css`: The CSS file for overall styling the application.
+- `banker.css`: Additional CSS file for specific styling for banker.html.
 - `banker.js`: JavaScript file containing the logic for the Banker's Algorithm and interactive features.
 - `README.md`: This file.
 
@@ -43,8 +43,9 @@ This project implements the Banker's Algorithm for deadlock avoidance in the con
 
 ### Input Values
 
-1. Enter the allocation and maximum resource values for each process.
-2. Enter the available instances for each resource type.
+1. Enter the allocation and maximum resource values.
+2. Enter the total instances of resources for each process.
+3. Run the Algorithm.
 
 ### Run Algorithm
 
